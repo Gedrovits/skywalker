@@ -1,0 +1,74 @@
+var prefix = 'i18n-wysiwyg-';
+
+$('body').on('focus', '[contenteditable]', function() {
+  var $this = $(this);
+  $this.data('before', $this.html());
+  return $this;
+}).on('blur keyup paste input', '[contenteditable]', function() {
+  var $this = $(this);
+  if ($this.data('before') !== $this.html()) {
+    $this.data('before', $this.html());
+    // OVERRIDE
+    // We should set correct class for changed translation
+    if ($this.data(prefix + 'original') == $this.html()) {
+      $this.addClass(prefix + 'original');
+      $this.removeClass(prefix + 'override');
+
+      $this.data(prefix + 'override', $this.html());
+    } else {
+      $this.addClass(prefix + 'override');
+      $this.removeClass(prefix + 'original');
+
+      $this.data(prefix + 'override', '');
+    }
+    // END OVERRIDE
+    $this.trigger('change');
+  }
+  return $this;
+});
+
+var $save_button = $('#' + prefix + 'save');
+var $reset_button = $('#' + prefix + 'reset');
+var $changes_count = $('#' + prefix + 'changes-count');
+
+// Initial changes count
+$changes_count.html('0 / ' + $('[contenteditable]').length);
+
+$save_button.on('click', function(e) {
+  alert('Implement save!');
+  // TODO: Collect changes and send to backend
+});
+
+$reset_button.on('click', function(e) {
+  $('[contenteditable]').each(function(idx, elem) {
+    var $elem = $(elem);
+    $elem.html($elem.data(prefix + 'original'));
+    $elem.addClass(prefix + 'original');
+    $elem.removeClass(prefix + 'override');
+    $elem.trigger('change');
+  });
+
+  // Update changes count
+  $changes_count.html($('.' + prefix + 'override').length + ' / ' + $('[contenteditable]').length);
+});
+
+// OVERRIDE
+$(document).on('change', '.i18n-wysiwyg', function(e) {
+  //var $target = $(this);
+  //console.log($target.text());
+  
+  var override_length = $('.' + prefix + 'override').length;
+  var original_length = $('[contenteditable]').length;
+
+  // If any changes allow to save and reset
+  if (override_length > 0) {
+    $save_button.prop('disabled', false);
+    $reset_button.prop('disabled', false);
+  } else {
+    $save_button.prop('disabled', true);
+    $reset_button.prop('disabled', true);
+  }
+  
+  // Update changes count
+  $changes_count.html(override_length + ' / ' + original_length);
+});

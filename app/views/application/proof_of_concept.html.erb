@@ -1,0 +1,19 @@
+<%= render partial: 'app_menu' %>
+
+<%= render partial: 'jumbotron_narrow' %>
+
+<style>
+  .i18n-wysiwyg-original:after {
+    content: " \2713";
+    color: green;
+  }
+  
+  .i18n-wysiwyg-override:after {
+    content: " \2717";
+    color: red;
+  }
+</style>
+
+<script>
+  <%= render partial: 'blogic.js' %>
+</script>

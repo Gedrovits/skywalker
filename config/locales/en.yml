@@ -1,0 +1,53 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+en:
+  proof:
+    project_name: 'Project name'
+    menu:
+      home: 'Home'
+      about: 'About'
+      contact: 'Contact'
+    jumbotron:
+      heading: 'Jumbotron heading'
+      lead: 'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.'
+      call_to_action: 'Sign up today'
+    marketing:
+      f1:
+        h4: Subheading
+        p: Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.
+      f2:
+        h4: Subheading 2
+        p: Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.
+      f3:
+        h4: Subheading 3
+        p: Maecenas sed diam eget risus varius blandit sit amet non magna.
+      f4:
+        h4: Subheading 4
+        p: Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.
+      f5:
+        h4: Subheading 5
+        p: Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.
+      f6:
+        h4: Subheading 6
+        p: Maecenas sed diam eget risus varius blandit sit amet non magna.
+    footer:
+      copyright: " 2016 Company, Inc."
